@@ -1,2 +1,63 @@
 # opmath
-Multipackage containing rhombus, a symbolic computation and rewrite engine, along with two dependencies: the abcd and futilities modules.
+
+This package is home to the 'rhombus' module, a symbolic computation & rewrite engine.  The outer package is called 'opmath' (after the core symbolic types, opterm and opvar), but that really only exists to ensure access to the 'abcd' and 'futilities' modules, which the main module imports from.  Eventually, opmath will likely be disolved into three standalone modules:  abcd, futilities, and rhombus.
+
+This multipackage can be installed simply by pasting the folder named 'opmath' into the desired input directory.  Support for installation via pip should be expected soon, but for now, this works well enough.  The parent directory can be the standard site-packages folder or wherever else the local interpreter imports from, or it can be any arbitrary folder, which a given script can access using:
+    >>> import sys
+    >>> sys.path.append(f"{<parent directory>}")
+Then importing whatever you need from the toolkit:    
+    >>> from opmath.abcd import _abcd_ as abcd, \
+    >>>                                                _numbers_abcd_ as numbers_abcd, \
+    >>>                                                _collections_abcd_ as collections_abcd, \
+    >>>                                                _mathdomains_abcd_ as mathdomains_abcd, \
+    >>> from opmath.abcd.domains import *
+    >>> from opmath.futilities.aliases import *
+    >>> from opmath.futilities import miscellaneous_debris as md, \
+    >>>                                                         nestindextensions as nst, \
+    >>>                                                         syntax_tricks as stx, \
+    >>>                                                         functions as fc
+    >>> from opmath.rhombus.rho import *
+
+Those are all the modules & submodules.  As a directory, they are structured like so:
+
+f"{<parent directory>}/" + ...
+    • "opmath/" + ...
+    |    • "abcd/" + ...
+    |    |    • "_abcd_.py"
+    |    |        → Core definitions for ABCD (Abstract Base Class Domain) structures.
+    |    |    • "_numbers_abcd_.py"
+    |    |        → Alternative to the numbers module based on ABCDMeta instead of ABCMeta
+    |    |    • "_collections_abcd_.py"
+    |    |        → Alternative to the collections.abc module based on ABCDMeta instead of ABCMeta
+    |    |    • "_mathdomains_abcd_.py"
+    |    |        → Imports from the other 3 submodules
+    |    |    • "domains.py"
+    |    |        → Consolidates the other 4 submodules of abcd under a common namespace.
+    |    • "futilities/" + ...
+    |    |    • "aliases.py"
+    |    |        → Nonstandard builtin types as globals named after their .__name__ attributes.  So,
+    |    |        types.FunctionType is aliases.function, type(iter(tuple())) is aliases.tuple_iterator, etc..
+    |    |    • "functions.py"
+    |    |        → Collection of essential math/mathlike functions with a focus on mapping out the 
+    |    |        combinations and permutations within the overal configuration space of functions.
+    |    |    • "miscellaneous_debris.py"
+    |    |        → A hodgepodge of various tools and utilities; mostly for development and backend.
+    |    |    • "syntax_tricks.py"
+    |    |        → Convenience types which misuse python operators and syntax in creative ways.
+    |    • "rhombus/" + ...
+    |    |    • "_ᴋⲉᴙᴎ_.py"
+    |    |        → Minimal initializer for the module.  Exists mostly to enable from _ᴋⲉᴙᴎ_ import 
+    |    |        Unknown for use in other projects.
+    |    |    • "__ᴄꕺʀⲉ__.py"
+    |    |        → Main engine for the module.  Generally don’t import directly from here.
+    |    |    • "_ⲉʟⲉᴍⲉɴᴛꜱ_.py"
+    |    |        → Defines referent singletons for function elements // special values.
+    |    |    • "constants.py"
+    |    |        → Defines some common constants & domain extrema as named opvar objects.
+    |    |    • "patterns.py"
+    |    |        → Sets up dictionaries and rewriters for basic canonical/simplify rules of 
+    |    |        mathematical & pythonic operators.
+    |    |    • "rho.py"
+    |    |        → Consolidates the other 5 submodules of rhombus into a single namespace.
+
+
