@@ -48,6 +48,9 @@ from rhombus import _ᴋⲉᴙᴎ_
 from rhombus._ᴋⲉᴙᴎ_ import *
 
 
+__doc__ = "Rhombus is an optimized symbolic rewrite system with a focus on
+
+
 _Dflt = DefaultObject
 ꓽtupleꓸ__new__ = tuple.__new__
 ꓽtupleꓸ__getitem__ = tuple.__getitem__
