@@ -48,7 +48,98 @@ from rhombus import _ᴋⲉᴙᴎ_
 from rhombus._ᴋⲉᴙᴎ_ import *
 
 
-__doc__ = "Rhombus is an optimized symbolic rewrite system with a focus on
+__doc__ = """
+Rhombus: A Flexible Symbolic Rewriting System
+=============================================
+
+Rhombus is a general-purpose symbolic expression and rewriting system
+designed to represent, manipulate, and transform mathematical
+expressions. It provides a flexible foundation for symbolic computation,
+with an emphasis on structural generality, extensibility, and
+customizable algebraic behavior, as well as string representation and 
+parenthesization congruent with python syntax.
+
+Rather than prescribing a fixed set of mathematical laws, Rhombus
+separates the representation of expressions from the properties and
+transformations that may be applied to them. This allows it to
+accommodate a wide variety of mathematical domains, including
+conventional algebraic systems, lattices, symbolic sets, and
+structures with unconventional or user-defined operations.
+
+Core components include, but are not limited to:
+
+	class opvar:
+		Represents symbolic operands, variables, parameters, and 
+        constants. Supports arbitrary symbol tagging, known/unknown 
+        value, domains, referents, and matching.
+	
+	class opfunc (opvar):
+		Represents symbolic operators and functions, including 
+        access to arity, input/output domains, implementations, and 
+        other metadata [see opdata below].
+
+	class opterm:
+		Represents symbolic expressions as trees formed by operators 
+        with their operands. Provides expression construction, structural 
+        indexing, traversal, matching, replacement, parameterization, 
+        evaluation, and formatting.
+
+	class oprelation (opterm):
+		Specialized `opterm` for relational expressions, with support for 
+        comparisons and logical operations.
+
+	class opdata & namespace opdata_canonical:
+		Define and organize operator metadata, including formatting, 
+        precedence, arity, domains, and implementations. Canonical 
+        definitions provide operator information for Python syntax and 
+        other operations.
+
+Other features:
+
+	Domain sytem (ABCDMeta & co.):
+		Integrates the ABCD typing system to tag operands as belonging to a 
+        given domain.  [See the peripheral abcd module for more info.]  The 
+        system assists with pattern matching, and also allows for constants 
+        to be cleanly 'cast' from one domain to another, translating 
+        properties from one space to another without overlapping definitions 
+        [see the opvar type & the rhombus.constants submodule for more]. 
+
+	Nested Indexing:
+		The opterm class is a type of nested tuple which supports nested 
+        indexing, search, and traversal features.  [See the peripheral submodule, 
+        futilities.nestedindextensions, for more info.]  The rewrite system 
+        relies entirely on nested indexing to produce transformed expressions.
+ 
+	Matching and Rewriting:
+		Provides structural matching, equality-based matching, index discovery, 
+        transformation, and replacement mechanisms. Rewrite rules can be compiled 
+        into reusable rewriters and repeatedly applied until an expression 
+        stabilizes or a recursion limit is reached.
+
+    Optimization:
+        In generalized tests, rhombus has consistently outperformed Sympy in 
+        constructing expressions, making rewrites/replacements, and similar 
+        areas by 5-10x in terms of process time.
+
+Design Philosophy
+-----------------
+
+Rhombus prioritizes structural flexibility over assumptions about
+conventional mathematical behavior. Expressions are not required to
+satisfy familiar algebraic identities simply because they resemble
+familiar mathematical operations.
+
+Instead, mathematical properties and simplification rules are
+introduced explicitly through the appropriate domains and rewriting
+contexts. This distinction allows the system to represent any arbitrary
+symbolic construction, and transform those expressions according to whatever 
+identities or rules the user is able to express as {pattern: replacement} 
+expression pairs.
+
+The result is a modular symbolic framework intended to support both
+traditional symbolic algebra and the exploration of more general
+mathematical structures.
+"""
 
 
 _Dflt = DefaultObject
