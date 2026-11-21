@@ -21,43 +21,47 @@ Then importing whatever you need from the toolkit:
 Those are all the modules & submodules.  As a directory, they are structured like so:
 
 f"{<parent directory>}/" + ...
-    • "opmath/" + ...
-    |    • "abcd/" + ...
+    # "opmath/" + ...
+    |    ★ "abcd/" + ...
+    |    |  → Domain system built upon python’s abstract base class and typing features.
     |    |    • "_abcd_.py"
-    |    |        → Core definitions for ABCD (Abstract Base Class Domain) structures.
+    |    |      → Core definitions for ABCD (Abstract Base Class Domain) structures.
     |    |    • "_numbers_abcd_.py"
-    |    |        → Alternative to the numbers module based on ABCDMeta instead of ABCMeta
+    |    |      → Alternative to the numbers module based on ABCDMeta instead of ABCMeta
     |    |    • "_collections_abcd_.py"
-    |    |        → Alternative to the collections.abc module based on ABCDMeta instead of ABCMeta
+    |    |      → Alternative to the collections.abc module based on ABCDMeta instead of ABCMeta
     |    |    • "_mathdomains_abcd_.py"
-    |    |        → Imports from the other 3 submodules
+    |    |      → Imports from the other 3 submodules
     |    |    • "domains.py"
-    |    |        → Consolidates the other 4 submodules of abcd under a common namespace.
-    |    • "futilities/" + ...
+    |    |      → Consolidates the other 4 submodules of abcd under a common namespace.
+    |    ★ "futilities/" + ...
+    |    |  → Various utility submodules.
     |    |    • "aliases.py"
-    |    |        → Nonstandard builtin types as globals named after their .__name__ attributes.  So,
+    |    |      → Nonstandard builtin types as globals named after their .__name__ attributes.  So,
     |    |        types.FunctionType is aliases.function, type(iter(tuple())) is aliases.tuple_iterator, etc..
     |    |    • "functions.py"
-    |    |        → Collection of essential math/mathlike functions with a focus on mapping out the 
+    |    |      → Collection of essential math/mathlike functions with a focus on mapping out the 
     |    |        combinations and permutations within the overal configuration space of functions.
     |    |    • "miscellaneous_debris.py"
-    |    |        → A hodgepodge of various tools and utilities; mostly for development and backend.
+    |    |      → A hodgepodge of various tools and utilities; mostly for development and backend.
     |    |    • "syntax_tricks.py"
-    |    |        → Convenience types which misuse python operators and syntax in creative ways.
-    |    • "rhombus/" + ...
+    |    |      → Convenience types which misuse python operators and syntax in creative ways.
+    |    ★ "rhombus/" + ...
+    |    |  → The primary module.  Optimized and flexible symbolic system for working with mathematical 
+    |    |      expressions, formulas, equations, etc.
     |    |    • "_ᴋⲉᴙᴎ_.py"
-    |    |        → Minimal initializer for the module.  Exists mostly to enable from _ᴋⲉᴙᴎ_ import 
+    |    |      → Minimal initializer for the module.  Exists mostly to enable from _ᴋⲉᴙᴎ_ import 
     |    |        Unknown for use in other projects.
     |    |    • "__ᴄꕺʀⲉ__.py"
-    |    |        → Main engine for the module.  Generally don’t import directly from here.
+    |    |      → Main engine for the module.  Generally don’t import directly from here.
     |    |    • "_ⲉʟⲉᴍⲉɴᴛꜱ_.py"
-    |    |        → Defines referent singletons for function elements // special values.
+    |    |      → Defines referent singletons for function elements // special values.
     |    |    • "constants.py"
-    |    |        → Defines some common constants & domain extrema as named opvar objects.
+    |    |      → Defines some common constants & domain extrema as named opvar objects.
     |    |    • "patterns.py"
-    |    |        → Sets up dictionaries and rewriters for basic canonical/simplify rules of 
+    |    |      → Sets up dictionaries and rewriters for basic canonical/simplify rules of 
     |    |        mathematical & pythonic operators.
     |    |    • "rho.py"
-    |    |        → Consolidates the other 5 submodules of rhombus into a single namespace.
+    |    |      → Consolidates the other 5 submodules of rhombus into a single namespace.
 
 
